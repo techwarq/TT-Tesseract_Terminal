@@ -1,0 +1,171 @@
+from datetime import date
+
+STOCKS = [
+    {
+        "name": "Reliance Industries",
+        "ticker": "RELIANCE",
+        "price": 2850.5,
+        "market_cap": "19.3T INR",
+        "pe": 24.1,
+        "trend": "Up",
+        "daily_change_pct": 1.2,
+        "series": {
+            "1M": [
+                {"date": "2025-11-01", "price": 2820.3},
+                {"date": "2025-12-01", "price": 2850.5},
+                {"date": "2026-01-01", "price": 2862.8},
+                {"date": "2026-02-01", "price": 2880.4},
+                {"date": "2026-03-01", "price": 2895.1},
+            ],
+            "6M": [
+                {"date": "2025-09-01", "price": 2700.4},
+                {"date": "2025-10-01", "price": 2740.9},
+                {"date": "2025-11-01", "price": 2795.2},
+                {"date": "2025-12-01", "price": 2850.5},
+                {"date": "2026-01-01", "price": 2862.8},
+                {"date": "2026-02-01", "price": 2895.1},
+                {"date": "2026-03-01", "price": 2912.6},
+            ],
+            "1Y": [
+                {"date": "2025-03-01", "price": 2502.7},
+                {"date": "2025-05-01", "price": 2570.2},
+                {"date": "2025-07-01", "price": 2650.8},
+                {"date": "2025-09-01", "price": 2700.4},
+                {"date": "2025-11-01", "price": 2795.2},
+                {"date": "2026-01-01", "price": 2862.8},
+                {"date": "2026-03-01", "price": 2912.6},
+            ],
+        },
+    },
+    {
+        "name": "Tata Consultancy Services",
+        "ticker": "TCS",
+        "price": 3925.75,
+        "market_cap": "14.1T INR",
+        "pe": 29.4,
+        "trend": "Flat",
+        "daily_change_pct": -0.1,
+        "series": {
+            "1M": [
+                {"date": "2025-11-01", "price": 3900.2},
+                {"date": "2025-12-01", "price": 3920.1},
+                {"date": "2026-01-01", "price": 3912.4},
+                {"date": "2026-02-01", "price": 3925.75},
+                {"date": "2026-03-01", "price": 3932.6},
+            ],
+            "6M": [
+                {"date": "2025-09-01", "price": 3850.2},
+                {"date": "2025-10-01", "price": 3872.8},
+                {"date": "2025-11-01", "price": 3898.3},
+                {"date": "2025-12-01", "price": 3920.1},
+                {"date": "2026-01-01", "price": 3912.4},
+                {"date": "2026-02-01", "price": 3925.75},
+                {"date": "2026-03-01", "price": 3942.1},
+            ],
+            "1Y": [
+                {"date": "2025-03-01", "price": 3600.5},
+                {"date": "2025-05-01", "price": 3650.1},
+                {"date": "2025-07-01", "price": 3720.8},
+                {"date": "2025-09-01", "price": 3850.2},
+                {"date": "2025-11-01", "price": 3898.3},
+                {"date": "2026-01-01", "price": 3912.4},
+                {"date": "2026-03-01", "price": 3942.1},
+            ],
+        },
+    },
+    {
+        "name": "HDFC Bank",
+        "ticker": "HDFCBANK",
+        "price": 1520.2,
+        "market_cap": "11.4T INR",
+        "pe": 18.9,
+        "trend": "Down",
+        "daily_change_pct": -0.8,
+        "series": {
+            "1M": [
+                {"date": "2025-11-01", "price": 1550.5},
+                {"date": "2025-12-01", "price": 1538.2},
+                {"date": "2026-01-01", "price": 1528.6},
+                {"date": "2026-02-01", "price": 1520.2},
+                {"date": "2026-03-01", "price": 1512.4},
+            ],
+            "6M": [
+                {"date": "2025-09-01", "price": 1602.3},
+                {"date": "2025-10-01", "price": 1588.1},
+                {"date": "2025-11-01", "price": 1550.5},
+                {"date": "2025-12-01", "price": 1538.2},
+                {"date": "2026-01-01", "price": 1528.6},
+                {"date": "2026-02-01", "price": 1520.2},
+                {"date": "2026-03-01", "price": 1512.4},
+            ],
+            "1Y": [
+                {"date": "2025-03-01", "price": 1702.9},
+                {"date": "2025-05-01", "price": 1668.4},
+                {"date": "2025-07-01", "price": 1632.7},
+                {"date": "2025-09-01", "price": 1602.3},
+                {"date": "2025-11-01", "price": 1550.5},
+                {"date": "2026-01-01", "price": 1528.6},
+                {"date": "2026-03-01", "price": 1512.4},
+            ],
+        },
+    },
+]
+
+MARKET_OVERVIEW = {
+    "as_of": date(2026, 2, 7).isoformat(),
+    "indices": [
+        {"name": "NIFTY 50", "value": 22340.15, "change_pct": 0.82},
+        {"name": "BANK NIFTY", "value": 47920.55, "change_pct": -0.44},
+    ],
+    "advance_decline": {"advances": 31, "declines": 19},
+    "sectors": [
+        {"sector": "Financials", "change_pct": 1.6},
+        {"sector": "IT Services", "change_pct": -0.9},
+        {"sector": "Energy", "change_pct": 0.4},
+        {"sector": "Consumer", "change_pct": 1.1},
+        {"sector": "Healthcare", "change_pct": -0.2},
+        {"sector": "Industrials", "change_pct": 0.7},
+        {"sector": "Auto", "change_pct": -1.4},
+        {"sector": "Metals", "change_pct": 0.9},
+        {"sector": "Telecom", "change_pct": 0.2},
+    ],
+}
+
+STARTUPS = [
+    {
+        "id": "airship-ml",
+        "name": "Airship ML",
+        "sector": "AI Infrastructure",
+        "country": "India",
+        "description": "GPU orchestration layer for regulated data centers.",
+        "status": "Interesting",
+        "overview": "Compliance-first GPU scheduling fabric for banks and insurers.",
+        "momentum": [
+            {"month": "Sep", "hiring": 42, "buzz": 30, "events": ["Seed Round"]},
+            {"month": "Oct", "hiring": 55, "buzz": 36},
+            {"month": "Nov", "hiring": 61, "buzz": 45, "events": ["Launch v2"]},
+            {"month": "Dec", "hiring": 58, "buzz": 50},
+            {"month": "Jan", "hiring": 70, "buzz": 68, "events": ["Series A"]},
+        ],
+        "notes": "",
+    },
+    {
+        "id": "voltgrid",
+        "name": "Voltgrid",
+        "sector": "Energy Tech",
+        "country": "Singapore",
+        "description": "AI-assisted grid balancing for renewable-heavy markets.",
+        "status": "Watch",
+        "overview": "Short-term demand forecasting to reduce curtailment for solar-heavy utilities.",
+        "momentum": [
+            {"month": "Sep", "hiring": 18, "buzz": 22},
+            {"month": "Oct", "hiring": 20, "buzz": 24},
+            {"month": "Nov", "hiring": 21, "buzz": 33, "events": ["Utility MoU"]},
+            {"month": "Dec", "hiring": 27, "buzz": 41},
+            {"month": "Jan", "hiring": 30, "buzz": 48},
+        ],
+        "notes": "",
+    },
+]
+
+WATCHLIST = ["RELIANCE", "TCS", "HDFCBANK"]

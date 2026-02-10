@@ -109,6 +109,20 @@ STOCKS = [
             ],
         },
     },
+    {
+        "name": "Infosys",
+        "ticker": "INFY",
+        "price": 1675.4,
+        "market_cap": "6.9T INR",
+        "pe": 26.2,
+        "trend": "Up",
+        "daily_change_pct": 0.5,
+        "series": {
+            "1M": [{"date": "2026-02-01", "price": 1660}, {"date": "2026-03-01", "price": 1675.4}],
+            "6M": [{"date": "2025-09-01", "price": 1500}, {"date": "2026-03-01", "price": 1675.4}],
+            "1Y": [{"date": "2025-03-01", "price": 1400}, {"date": "2026-03-01", "price": 1675.4}],
+        }
+    },
 ]
 
 MARKET_OVERVIEW = {
@@ -116,6 +130,7 @@ MARKET_OVERVIEW = {
     "indices": [
         {"name": "NIFTY 50", "value": 22340.15, "change_pct": 0.82},
         {"name": "BANK NIFTY", "value": 47920.55, "change_pct": -0.44},
+        {"name": "SENSEX", "value": 73142.20, "change_pct": 0.12},
     ],
     "advance_decline": {"advances": 31, "declines": 19},
     "sectors": [
@@ -130,6 +145,14 @@ MARKET_OVERVIEW = {
         {"sector": "Telecom", "change_pct": 0.2},
     ],
 }
+
+NEWS = [
+    {"time": "20:10", "headline": "RELIANCE Q3 PROFIT BEATS ESTIMATES AT 17,265 CR", "source": "BBG"},
+    {"time": "19:45", "headline": "RBI TO MAINTAIN RATES AT 6.5% AMID INFLATION CONCERNS", "source": "BBG"},
+    {"time": "18:30", "headline": "INFOSYS SECURES $500M DEAL WITH EUROPEAN RETAILER", "source": "RTRS"},
+    {"time": "17:15", "headline": "TATA MOTORS DVR TO BE DELISTED BY JAN 2026", "source": "BBG"},
+    {"time": "16:00", "headline": "GLOBAL MARKETS STEADY AS US JOBS DATA LOOMS", "source": "RTRS"},
+]
 
 STARTUPS = [
     {
@@ -168,4 +191,4 @@ STARTUPS = [
     },
 ]
 
-WATCHLIST = ["RELIANCE", "TCS", "HDFCBANK"]
+WATCHLIST = ["RELIANCE", "TCS", "HDFCBANK", "INFY"]

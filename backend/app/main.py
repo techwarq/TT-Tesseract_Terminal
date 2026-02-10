@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.data import MARKET_OVERVIEW, STARTUPS, STOCKS, WATCHLIST
+from app.data import MARKET_OVERVIEW, NEWS, STARTUPS, STOCKS, WATCHLIST
 from app.models import MarketOverview, Startup, StartupListItem, Stock
 
 app = FastAPI(title="Market Intelligence API", version="0.1.0")
@@ -17,6 +17,11 @@ app.add_middleware(
 @app.get("/api/stocks/overview", response_model=MarketOverview)
 async def get_market_overview():
     return MARKET_OVERVIEW
+
+
+@app.get("/api/news")
+async def get_news():
+    return NEWS
 
 
 @app.get("/api/stocks", response_model=list[Stock])

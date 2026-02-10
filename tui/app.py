@@ -9,7 +9,7 @@ import plotext as plt
 from rich.text import Text
 from textual import events, on
 from textual.app import App, ComposeResult
-from textual.containers import Container, Horizontal, Vertical, Grid
+from textual.containers import Container, Horizontal, Vertical
 from textual.reactive import reactive
 from textual.widgets import (
     DataTable,
@@ -66,10 +66,16 @@ class LiveTicker(Static):
         if not self.data:
             return
         
-        ticker_text = "  •  ".join(self.data)
-        ticker_text = f" {ticker_text}  •  {ticker_text} "
+        ticker_items = "  •  ".join(self.data)
+        ticker_text = f" {ticker_items}  •  {ticker_items} "
         
-        text = Text(ticker_text[self._offset:self._offset + 120], style=f"bold {UI_CYAN}")
+        # Simple scroll
+        win_size = self.size.width or 80
+        display_text = ticker_text[self._offset : self._offset + win_size]
+        if len(display_text) < win_size:
+             display_text += ticker_text[:win_size - len(display_text)]
+        
+        text = Text(display_text, style=f"bold {UI_CYAN}")
         self.update(text)
         self._offset = (self._offset + 1) % (len(ticker_text) // 2)
 
@@ -105,7 +111,11 @@ class PlotextChart(Static):
         plt.ticks_color("white")
         plt.plot(self.values, marker="dot", color="cyan")
         plt.title(f"{self.label} Historical")
-        plt.plotsize(self.size.width, self.size.height)
+        
+        # Ensure we have valid size
+        width = self.size.width or 40
+        height = self.size.height or 10
+        plt.plotsize(width, height)
         
         return Text.from_ansi(plt.build())
 
@@ -176,26 +186,6 @@ class TerminalApp(App):
     PlotextChart {{
         height: 15;
         border: solid #222;
-    }}
-
-    #main_grid {{
-        layout: grid;
-        grid-size: 2 2;
-        grid-columns: 1fr 1fr;
-        grid-rows: 1fr 1fr;
-    }}
-
-    #left_pane {{
-        grid-column-span: 1;
-    }}
-
-    #right_pane {{
-        grid-column-span: 1;
-    }}
-
-    #bottom_pane {{
-        grid-row-span: 1;
-        grid-column-span: 2;
     }}
     """
 
@@ -289,7 +279,7 @@ class TerminalApp(App):
             
             ticker_items = []
             for idx in overview["indices"]:
-                color = "green" if idx["change_pct"] >= 0 else "red"
+                # color = "green" if idx["change_pct"] >= 0 else "red"
                 ticker_items.append(f"{idx['name']} {idx['value']:,.2f} ({idx['change_pct']:+.2f}%)")
             self.ticker.data = ticker_items
         except:
@@ -330,7 +320,6 @@ class TerminalApp(App):
             self.exit()
         else:
             # Try to find stock
-            # This is simplified for the demo
             self.notify(f"Executing: {cmd}", title="Terminal")
 
     def action_switch_tab(self, tab_id: str) -> None:
